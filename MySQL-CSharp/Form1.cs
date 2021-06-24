@@ -13,6 +13,7 @@ namespace MySQL_CSharp
     public partial class Form1 : Form
     {
         MySqlConnection myCon;
+        string idSel = "";
         public Form1()
         {
             InitializeComponent();
@@ -155,6 +156,61 @@ namespace MySQL_CSharp
                 }
             }
             else {
+                MessageBox.Show(mensajeError);
+            }
+
+        }
+
+        private void dgTrabajadores_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int sel = e.RowIndex;
+            txtInNombre.Text = dgTrabajadores.Rows[sel].Cells[1].Value.ToString();
+            txtInPuesto.Text = dgTrabajadores.Rows[sel].Cells[2].Value.ToString();
+            txtInEdad.Text = dgTrabajadores.Rows[sel].Cells[3].Value.ToString();
+            idSel = dgTrabajadores.Rows[sel].Cells[0].Value.ToString();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            string query = "";
+            string mensajeError = "";
+            if (txtInNombre.Text == "")
+            {
+                mensajeError = mensajeError + "El nombre no puede estar vacio";
+            }
+            if (txtInPuesto.Text == "")
+            {
+                mensajeError = mensajeError + "El puesto no puede estar vacio";
+            }
+            if (txtInEdad.Text == "")
+            {
+                mensajeError = mensajeError + "La edad no puede estar vacio";
+            }
+            if (mensajeError == "")
+            {
+                query = "update trabajadores set " +
+                    "nombre='"+txtInNombre.Text+"'," +
+                    "puesto='"+txtInPuesto.Text + "',"+
+                    "edad='"+txtInEdad.Text + "' " +
+                    "where id='"+idSel+"'; ";
+                MySqlCommand comando = new MySqlCommand(query, myCon);
+                comando.CommandTimeout = 60;
+                MySqlDataReader reader;
+                try
+                {
+                    reader = comando.ExecuteReader();
+                    reader.Close();
+                    dgTrabajadores.Rows.Clear();
+                    dgTrabajadores.Refresh();
+                    llenarTabla();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+            else
+            {
                 MessageBox.Show(mensajeError);
             }
 

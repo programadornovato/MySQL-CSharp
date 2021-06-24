@@ -49,6 +49,7 @@ namespace MySQL_CSharp
             this.txtInPuesto = new System.Windows.Forms.TextBox();
             this.txtInEdad = new System.Windows.Forms.TextBox();
             this.btnInsertar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgTrabajadores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +75,7 @@ namespace MySQL_CSharp
             this.dgTrabajadores.RowTemplate.Height = 25;
             this.dgTrabajadores.Size = new System.Drawing.Size(509, 243);
             this.dgTrabajadores.TabIndex = 2;
+            this.dgTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTrabajadores_CellClick);
             // 
             // id
             // 
@@ -211,11 +213,22 @@ namespace MySQL_CSharp
             this.btnInsertar.UseVisualStyleBackColor = true;
             this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(300, 183);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(100, 43);
+            this.btnEditar.TabIndex = 7;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(583, 655);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnInsertar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtInEdad);
@@ -262,6 +275,7 @@ namespace MySQL_CSharp
         private System.Windows.Forms.TextBox txtInPuesto;
         private System.Windows.Forms.TextBox txtInEdad;
         private System.Windows.Forms.Button btnInsertar;
+        private System.Windows.Forms.Button btnEditar;
     }
 }
 
