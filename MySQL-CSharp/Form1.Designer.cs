@@ -42,6 +42,13 @@ namespace MySQL_CSharp
             this.txtBusPuesto = new System.Windows.Forms.TextBox();
             this.txtBusEdad = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtInNombre = new System.Windows.Forms.TextBox();
+            this.txtInPuesto = new System.Windows.Forms.TextBox();
+            this.txtInEdad = new System.Windows.Forms.TextBox();
+            this.btnInsertar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgTrabajadores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,16 +153,81 @@ namespace MySQL_CSharp
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(45, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 25);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Nombre";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(45, 78);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 25);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Puesto";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(45, 122);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 25);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Edad";
+            // 
+            // txtInNombre
+            // 
+            this.txtInNombre.Location = new System.Drawing.Point(159, 25);
+            this.txtInNombre.Name = "txtInNombre";
+            this.txtInNombre.Size = new System.Drawing.Size(395, 33);
+            this.txtInNombre.TabIndex = 4;
+            // 
+            // txtInPuesto
+            // 
+            this.txtInPuesto.Location = new System.Drawing.Point(159, 78);
+            this.txtInPuesto.Name = "txtInPuesto";
+            this.txtInPuesto.Size = new System.Drawing.Size(395, 33);
+            this.txtInPuesto.TabIndex = 4;
+            // 
+            // txtInEdad
+            // 
+            this.txtInEdad.Location = new System.Drawing.Point(159, 122);
+            this.txtInEdad.Name = "txtInEdad";
+            this.txtInEdad.Size = new System.Drawing.Size(395, 33);
+            this.txtInEdad.TabIndex = 4;
+            // 
+            // btnInsertar
+            // 
+            this.btnInsertar.Location = new System.Drawing.Point(457, 183);
+            this.btnInsertar.Name = "btnInsertar";
+            this.btnInsertar.Size = new System.Drawing.Size(97, 43);
+            this.btnInsertar.TabIndex = 6;
+            this.btnInsertar.Text = "Guardar";
+            this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(583, 655);
+            this.Controls.Add(this.btnInsertar);
             this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtInEdad);
+            this.Controls.Add(this.txtInPuesto);
             this.Controls.Add(this.txtBusEdad);
+            this.Controls.Add(this.txtInNombre);
             this.Controls.Add(this.txtBusPuesto);
             this.Controls.Add(this.txtBusNombre);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgTrabajadores);
@@ -183,6 +255,13 @@ namespace MySQL_CSharp
         private System.Windows.Forms.TextBox txtBusPuesto;
         private System.Windows.Forms.TextBox txtBusEdad;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtInNombre;
+        private System.Windows.Forms.TextBox txtInPuesto;
+        private System.Windows.Forms.TextBox txtInEdad;
+        private System.Windows.Forms.Button btnInsertar;
     }
 }
 

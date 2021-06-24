@@ -119,5 +119,45 @@ namespace MySQL_CSharp
                 Console.WriteLine(ex);
             }
         }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            string query = "";
+            string mensajeError = "";
+            if (txtInNombre.Text == "") {
+                mensajeError = mensajeError + "El nombre no puede estar vacio";
+            }
+            if (txtInPuesto.Text == "") {
+                mensajeError = mensajeError + "El puesto no puede estar vacio";
+            }
+            if (txtInEdad.Text == "") {
+                mensajeError = mensajeError + "La edad no puede estar vacio";
+            }
+            if (mensajeError == "")
+            {
+                query = "insert into trabajadores " +
+                    "(nombre                ,puesto                ,edad) values " +
+                    "('" + txtInNombre.Text + "','" + txtInPuesto.Text + "','" + txtInEdad.Text + "')";
+                MySqlCommand comando = new MySqlCommand(query, myCon);
+                comando.CommandTimeout = 60;
+                MySqlDataReader reader;
+                try
+                {
+                    reader = comando.ExecuteReader();
+                    reader.Close();
+                    dgTrabajadores.Rows.Clear();
+                    dgTrabajadores.Refresh();
+                    llenarTabla();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+            else {
+                MessageBox.Show(mensajeError);
+            }
+
+        }
     }
 }
