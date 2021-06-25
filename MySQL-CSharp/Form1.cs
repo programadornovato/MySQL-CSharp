@@ -219,9 +219,12 @@ namespace MySQL_CSharp
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
+            borrar(sel);
+        }
+        private void borrar(int selBorrar) {
             //sel
-            idSel = dgTrabajadores.Rows[sel].Cells[0].Value.ToString();
-            string query = "delete from trabajadores where id='"+idSel+"';";
+            idSel = dgTrabajadores.Rows[selBorrar].Cells[0].Value.ToString();
+            string query = "delete from trabajadores where id='" + idSel + "';";
             MySqlCommand comando = new MySqlCommand(query, myCon);
             comando.CommandTimeout = 60;
             MySqlDataReader reader;
@@ -240,8 +243,37 @@ namespace MySQL_CSharp
             {
                 Console.WriteLine(ex);
             }
-
-
+        }
+        private void dgTrabajadores_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) {
+                ContextMenuStrip menu =new System.Windows.Forms.ContextMenuStrip();
+                int posicion = dgTrabajadores.HitTest(e.X, e.Y).RowIndex;
+                if (posicion > -1) {
+                    menu.Items.Add("Borrar").Name = "Borrar" + posicion;
+                    menu.Items.Add("Mostrar").Name = "Mostrar" + posicion;
+                }
+                menu.Show(dgTrabajadores, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(munuClick);
+            }
+        }
+        private void munuClick(object sender, ToolStripItemClickedEventArgs e) {
+            string id = e.ClickedItem.Name.ToString();
+            if (id.Contains("Borrar")) {
+                id = id.Replace("Borrar", "");
+                borrar(int.Parse(id));
+            }
+            if (id.Contains("Mostrar")) {
+                id = id.Replace("Mostrar", "");
+                mostrar(int.Parse(id));
+            }
+        }
+        private void mostrar(int idMostrar) {
+            string res = "ID="+dgTrabajadores.Rows[idMostrar].Cells[0].Value.ToString()+"\n";
+            res = res + "NOMBRE=" + dgTrabajadores.Rows[idMostrar].Cells[1].Value.ToString() + "\n";
+            res = res + "PUESTO=" + dgTrabajadores.Rows[idMostrar].Cells[2].Value.ToString() + "\n";
+            res = res + "EDAD=" + dgTrabajadores.Rows[idMostrar].Cells[3].Value.ToString() + "\n";
+            MessageBox.Show(res);
         }
     }
 }

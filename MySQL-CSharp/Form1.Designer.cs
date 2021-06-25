@@ -77,6 +77,7 @@ namespace MySQL_CSharp
             this.dgTrabajadores.Size = new System.Drawing.Size(509, 243);
             this.dgTrabajadores.TabIndex = 2;
             this.dgTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTrabajadores_CellClick);
+            this.dgTrabajadores.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgTrabajadores_MouseClick);
             // 
             // id
             // 
