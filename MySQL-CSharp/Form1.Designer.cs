@@ -50,6 +50,7 @@ namespace MySQL_CSharp
             this.txtInEdad = new System.Windows.Forms.TextBox();
             this.btnInsertar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.btnBorrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgTrabajadores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,11 +224,22 @@ namespace MySQL_CSharp
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Location = new System.Drawing.Point(159, 183);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(111, 43);
+            this.btnBorrar.TabIndex = 8;
+            this.btnBorrar.Text = "Borrar";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(583, 655);
+            this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnInsertar);
             this.Controls.Add(this.btnBuscar);
@@ -276,6 +288,7 @@ namespace MySQL_CSharp
         private System.Windows.Forms.TextBox txtInEdad;
         private System.Windows.Forms.Button btnInsertar;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnBorrar;
     }
 }
 

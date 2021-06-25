@@ -14,6 +14,7 @@ namespace MySQL_CSharp
     {
         MySqlConnection myCon;
         string idSel = "";
+        int sel;
         public Form1()
         {
             InitializeComponent();
@@ -163,7 +164,7 @@ namespace MySQL_CSharp
 
         private void dgTrabajadores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int sel = e.RowIndex;
+            sel = e.RowIndex;
             txtInNombre.Text = dgTrabajadores.Rows[sel].Cells[1].Value.ToString();
             txtInPuesto.Text = dgTrabajadores.Rows[sel].Cells[2].Value.ToString();
             txtInEdad.Text = dgTrabajadores.Rows[sel].Cells[3].Value.ToString();
@@ -213,6 +214,33 @@ namespace MySQL_CSharp
             {
                 MessageBox.Show(mensajeError);
             }
+
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            //sel
+            idSel = dgTrabajadores.Rows[sel].Cells[0].Value.ToString();
+            string query = "delete from trabajadores where id='"+idSel+"';";
+            MySqlCommand comando = new MySqlCommand(query, myCon);
+            comando.CommandTimeout = 60;
+            MySqlDataReader reader;
+            try
+            {
+                reader = comando.ExecuteReader();
+                reader.Close();
+                dgTrabajadores.Rows.Clear();
+                dgTrabajadores.Refresh();
+                llenarTabla();
+                txtInNombre.Text = "";
+                txtInPuesto.Text = "";
+                txtInEdad.Text = "";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
 
         }
     }
